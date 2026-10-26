@@ -2,7 +2,7 @@ import sqlite3
 from config import BASE_DONNEES
 
 
-# Créer la table
+## Créer la table
 def creer_table():
 
     connexion = sqlite3.connect(BASE_DONNEES)
@@ -22,7 +22,7 @@ def creer_table():
     connexion.close()
 
 
-# Enregistrer un produit
+## Enregistrer un produit
 def ajouter_produit(nom, prix, note, url, image):
 
     connexion = sqlite3.connect(BASE_DONNEES)
@@ -37,7 +37,7 @@ def ajouter_produit(nom, prix, note, url, image):
     connexion.close()
 
 
-# Lire les produits enregistrés
+## Lire les produits enregistrés
 def lire_produits():
 
     connexion = sqlite3.connect(BASE_DONNEES)
@@ -50,4 +50,3 @@ def lire_produits():
     connexion.close()
 
     return produits
-

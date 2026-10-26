@@ -1,0 +1,14 @@
+mon_env/
+__pycache__/
+*.pyc
+.vscode/
+data/
+exports/
+
+git rm -r --cached mon_env
+git rm -r --cached data
+git rm -r --cached __pycache__
+git rm -r --cached app/controllers/__pycache__
+git rm -r --cached app/models/__pycache__
+git rm -r --cached app/scraper/__pycache__
+git rm -r --cached app/views/__pycache__

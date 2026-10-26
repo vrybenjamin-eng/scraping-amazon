@@ -6,4 +6,3 @@ def ouvrir_navigateur():
     navigateur = webdriver.Chrome()
 
     return navigateur
-

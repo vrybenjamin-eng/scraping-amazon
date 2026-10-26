@@ -1,3 +1,4 @@
+import os
 import csv
 from config import DOSSIER_EXPORTS
 from app.models.depot import lire_produits
@@ -8,7 +9,7 @@ def exporter_produits():
 
     produits = lire_produits()
 
-    chemin = DOSSIER_EXPORTS + "/produits.csv"
+    chemin = os.path.join(DOSSIER_EXPORTS, "produits.csv")
 
     with open(chemin, "w", newline="", encoding="utf-8-sig") as fichier:
 
@@ -29,4 +30,3 @@ def exporter_produits():
             ])
 
     return chemin
-

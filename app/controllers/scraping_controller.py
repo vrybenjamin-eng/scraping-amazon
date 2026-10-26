@@ -1,6 +1,7 @@
-from app.scraper.amazon_scraper import lancer_scraping #type: ignore
+from app.scraper.amazon_scraper import lancer_scraping
 
-# Démarrer la collecte
+
+## Démarrer la collecte
 def demarrer_scraping(url):
 
     try:
@@ -9,4 +10,3 @@ def demarrer_scraping(url):
 
     except Exception as erreur:
         return "Une erreur est survenue : " + str(erreur)
-

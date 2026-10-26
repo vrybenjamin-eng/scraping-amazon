@@ -1,16 +1,19 @@
 import os
 
-# Définir les dossiers du projet
+## Dossier principal du projet
+DOSSIER_PROJET = os.path.dirname(os.path.abspath(__file__))
 
-DOSSIER_DATA = "data"
-DOSSIER_IMAGES = "data/images"
-DOSSIER_EXPORTS = "exports"
+## Définir les dossiers du projet
 
-# Définir le chemin de la base de données
+DOSSIER_DATA = os.path.join(DOSSIER_PROJET, "data")
+DOSSIER_IMAGES = os.path.join(DOSSIER_PROJET, "data", "images")
+DOSSIER_EXPORTS = os.path.join(DOSSIER_PROJET, "exports")
 
-BASE_DONNEES = "data/produits.db"
+## Définir le chemin de la base de données
 
-# Créer les dossiers s'ils n'existent pas
+BASE_DONNEES = os.path.join(DOSSIER_DATA, "produits.db")
+
+## Créer les dossiers s'ils n'existent pas
 
 os.makedirs(DOSSIER_DATA, exist_ok=True)
 os.makedirs(DOSSIER_IMAGES, exist_ok=True)

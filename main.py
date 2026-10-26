@@ -1,6 +1,6 @@
 from app.models.depot import creer_table
 from app.controllers.scraping_controller import demarrer_scraping
-from app.views.console_view import afficher_produit
+from app.views.console_view import afficher_produits
 
 # Préparer la base de données
 creer_table()
@@ -27,7 +27,7 @@ while True:
 
     elif choix == "2":
 
-        afficher_produit()
+        afficher_produits()
 
     elif choix == "3":
 

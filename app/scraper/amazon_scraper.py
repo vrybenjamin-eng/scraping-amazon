@@ -1,14 +1,14 @@
 import os
 import time
 import hashlib
-import requests 
+import requests
 from config import DOSSIER_IMAGES
 from app.scraper.driver import ouvrir_navigateur
 from app.scraper.parsing import recuperer_produits
 from app.models.depot import ajouter_produit
 
 
-# Télécharger une image
+## Télécharger une image
 def telecharger_image(image_url, url_produit):
 
     if not image_url.startswith("https://"):
@@ -29,6 +29,7 @@ def telecharger_image(image_url, url_produit):
     try:
         reponse = requests.get(
             image_url,
+            headers={"User-Agent": "Mozilla/5.0"},
             timeout=10
         )
 
@@ -48,7 +49,7 @@ def telecharger_image(image_url, url_produit):
         return ""
 
 
-# Récupérer et enregistrer les produits
+## Récupérer et enregistrer les produits
 def lancer_scraping(url):
 
     navigateur = ouvrir_navigateur()
@@ -59,6 +60,12 @@ def lancer_scraping(url):
         navigateur.get(url)
 
         time.sleep(3)
+        navigateur.get(url)
+
+        time.sleep(3)
+
+        print("Titre de la page :", navigateur.title)
+        print("URL actuelle :", navigateur.current_url)
 
         texte_page = navigateur.find_element(
             "tag name", "body"
@@ -70,6 +77,11 @@ def lancer_scraping(url):
             "access denied"
         ]):
             return "Accès refusé : arrête la collecte."
+
+        # Descendre dans la page pour que les images se chargent
+        for i in range(5):
+            navigateur.execute_script("window.scrollBy(0, 1000);")
+            time.sleep(1)
 
         produits = recuperer_produits(navigateur)
 
@@ -100,4 +112,3 @@ def lancer_scraping(url):
 
     finally:
         navigateur.quit()
-

@@ -1,4 +1,6 @@
 from app.models.depot import lire_produits
+
+
 # Afficher les produits
 def afficher_produits():
 
